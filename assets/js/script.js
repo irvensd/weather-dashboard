@@ -13,7 +13,7 @@ function weatherPage() {
     var currentWeatherEl = document.getElementById("today-weather");
     let searchHistory = JSON.parse(localStorage.getItem("search")) || [];
 
-    // Assigning a unique API to a variable
+
     const APIKey = "caddaaf6120069938f96e370d15cf61b";
 
     function weatherTemp(cityName) {
@@ -37,4 +37,27 @@ function weatherPage() {
                 currentHumidityEl.innerHTML = "Humidity: " + response.data.main.humidity + "%";
                 currentWindEl.innerHTML = "Wind Speed: " + response.data.wind.speed + " MPH";
                 
+                // Get UV Index
+                let latitude = response.data.coord.lat;
+                let longitude = response.data.coord.lon;
+                let UVQueryURL = "https://api.openweathermap.org/data/2.5/uvi/forecast?lat=" + latitude + "&lon=" + longitude + "&appid=" + APIKey + "&cnt=1";
+                axios.get(UVQueryURL)
+                    .then(function (response) {
+                        let UVIndex = document.createElement("span");
+                        
+                        // When UV Index is good it will show green, when ok shows yellow, when bad shows red
+                        if (response.data[0].value < 4 ) {
+                            UVIndex.setAttribute("class", "badge badge-success");
+                        }
+                        else if (response.data[0].value < 8) {
+                            UVIndex.setAttribute("class", "badge badge-warning");
+                        }
+                        else {
+                            UVIndex.setAttribute("class", "badge badge-danger");
+                        }
+                        console.log(response.data[0].value)
+                        UVIndex.innerHTML = response.data[0].value;
+                        currentUVEl.innerHTML = "UV Index: ";
+                        currentUVEl.append(UVIndex);
+                    });
                 
