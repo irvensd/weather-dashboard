@@ -19,6 +19,7 @@ WHEN I click on a city in the search history
 THEN I am again presented with current and future conditions for that city
 
 
+![image](https://user-images.githubusercontent.com/92906651/148655308-41080a3c-9f50-4de6-a15c-e28f82d1b822.png)
 
 
 Built with HTML, CSS, JAVASCRIPT
