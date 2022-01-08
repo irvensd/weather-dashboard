@@ -18,7 +18,7 @@ THEN I am presented with a 5-day forecast that displays the date, an icon repres
 WHEN I click on a city in the search history
 THEN I am again presented with current and future conditions for that city
 
-![](Weather Dashboard.gif)
+![](https://github.com/irvensd/weather-dashboard/blob/d8500f4b78ee6eb60be4789aa637ad74c0367da6/Weather%20Dashboard.gif)
 
 
 Built with HTML, CSS, JAVASCRIPT
